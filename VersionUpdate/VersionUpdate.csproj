@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AssemblyName>DigitalZenWorks.Common.VersionUpdate</AssemblyName>
+		<CodeAnalysisRuleSet>../CodeAnalysis.ruleset</CodeAnalysisRuleSet>
+		<Company>James John McGuire</Company>
+		<Copyright>Copyright © 2020 - 2021</Copyright>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<OutputPath>$(SolutionDir)\Bin\$(Configuration)\$(Platform)</OutputPath>
+		<OutputType>Exe</OutputType>
+		<Platforms>AnyCPU;x86;x64</Platforms>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\VersionUtilities\VersionUtilities.csproj" />
+	</ItemGroup>
+
+</Project>
