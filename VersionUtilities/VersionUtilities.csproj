@@ -10,7 +10,7 @@
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<OutputPath>$(SolutionDir)\Bin\$(Configuration)\$(Platform)</OutputPath>
-		<Platforms>AnyCPU;x86;x64</Platforms>
+		<Platforms>x86;x64</Platforms>
 		<TargetFramework>net5.0</TargetFramework>
 	</PropertyGroup>
 
