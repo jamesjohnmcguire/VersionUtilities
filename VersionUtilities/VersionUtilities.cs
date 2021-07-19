@@ -228,6 +228,84 @@ namespace DigitalZenWorks.Common.Utilities
 			return fileType;
 		}
 
+		private static string UpdateBuildNumber(
+			string fileContents)
+		{
+			Match oldVersionMatch = Regex.Match(
+				fileContents, "PRODUCT_VERSION_BUILD\\s*([0-9])*");
+
+			string oldVersion = oldVersionMatch.ToString();
+			Console.WriteLine("Old Version: " + oldVersion);
+
+			Match versionMatchsub = Regex.Match(
+				oldVersion, "[0-9]+"); // only one digit
+
+			string versionNumber = versionMatchsub.ToString();
+			int buildNumber = Convert.ToInt32(versionNumber);
+			buildNumber++;
+
+			string newVersion = "PRODUCT_VERSION_BUILD\t" + buildNumber.ToString();
+
+			string newFileContents = Regex.Replace(
+				fileContents,
+				"PRODUCT_VERSION_BUILD\\s*([0-9])*",
+				newVersion);
+			Console.WriteLine("New Version: " + newVersion);
+
+			return newFileContents;
+		}
+
+		private static string UpdateDateStamp(
+			string fileContents)
+		{
+			Match oldVersionMatch = Regex.Match(
+				fileContents,
+				"PRODUCT_VERSION_DATE\\s*\"([0-9]{4,4}-?[0-1][0-9]-?[0-3][0-9])");
+
+			DateTime today = DateTime.UtcNow;
+
+			string newDate = "PRODUCT_VERSIONDATE\t\"" + today.ToString("yyyy-MM-dd");
+
+			string newFileContents = Regex.Replace(
+				fileContents,
+				"PRODUCT_VERSION_DATE\\s\"([0-9]{4,4}-?[0-1][0-9]-?[0-3][0-9])",
+				newDate);
+
+			return newFileContents;
+		}
+
+		private static string UpdateTimeStamp(
+			string fileContents)
+		{
+			Match oldVersionMatch = Regex.Match(
+				fileContents,
+				"PRODUCT_VERSION_TIME\\s*\"([0-9]*:[0-9]*:[0-9]*)");
+
+			DateTime today = DateTime.UtcNow;
+
+			string newTime =
+				"PRODUCT_VERSION_TIME\t\"" + today.ToString("HH:mm:ss");
+
+			string newFileContents = Regex.Replace(
+				fileContents,
+				"PRODUCT_VERSION_TIME\\s*\"([0-9]*:[0-9]*:[0-9]*)",
+				newTime);
+
+			return newFileContents;
+		}
+
+		private static string VersionFileUpdate(
+			string contents, out string version)
+		{
+			version = null;
+
+			contents = UpdateBuildNumber(contents);
+			contents = UpdateDateStamp(contents);
+			contents = UpdateTimeStamp(contents);
+
+			return contents;
+		}
+
 		private static string VersionTagUpdate(
 			string contents,
 			string pattern,
