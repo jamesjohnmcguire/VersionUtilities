@@ -2,8 +2,8 @@
   "profiles": {
     "VersionUpdate": {
       "commandName": "Project",
-      "commandLineArgs": "Gawa.csproj",
-      "workingDirectory": "C:\\Users\\JamesMc\\Data\\Clients\\Gawa\\SourceCode\\Application\\Gawa"
+      "commandLineArgs": "Style.css",
+      "workingDirectory": "C:\\Users\\JamesMc\\Data\\Clients\\DigitalZenWorks\\DigitalZenTheme\\SourceCode"
     }
   }
 }

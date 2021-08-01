@@ -110,6 +110,10 @@ namespace DigitalZenWorks.Common.Utilities
 								contents = CsProjUpdate(
 									contents, out version);
 								break;
+							case VersionFileType.Css:
+								contents = CssUpdate(
+									contents, out version);
+								break;
 							default:
 								break;
 						}
@@ -207,6 +211,23 @@ namespace DigitalZenWorks.Common.Utilities
 			return contents;
 		}
 
+		private static string CssUpdate(
+			string contents, out string version)
+		{
+			version = null;
+
+			string tag = "Version: ";
+
+			string pattern = tag +
+				"(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<build>\\d+)";
+			string replacementFormat = tag + "{0}.{1}.{2}";
+
+			contents = VersionTagUpdate(
+				contents, pattern, replacementFormat, out version);
+
+			return contents;
+		}
+
 		private static VersionFileType GetFileType(string fileName)
 		{
 			VersionFileType fileType = VersionFileType.Generic;
@@ -221,10 +242,13 @@ namespace DigitalZenWorks.Common.Utilities
 				case ".csproj":
 					fileType = VersionFileType.CsProj;
 					break;
+				case ".css":
+					fileType = VersionFileType.Css;
+					break;
 				default:
 					break;
 			}
-	
+
 			return fileType;
 		}
 
@@ -318,6 +342,7 @@ namespace DigitalZenWorks.Common.Utilities
 
 			if (matches.Count > 0)
 			{
+				string replacement = string.Empty;
 				int build;
 				string major = matches[0].Groups["major"].Value;
 				string minor = matches[0].Groups["minor"].Value;
@@ -328,13 +353,27 @@ namespace DigitalZenWorks.Common.Utilities
 
 				version = build.ToString(CultureInfo.InvariantCulture);
 
-				string replacement = string.Format(
-					CultureInfo.InvariantCulture,
-					replacementFormat,
-					major,
-					minor,
-					revision,
-					version);
+				if (string.IsNullOrWhiteSpace(revision))
+				{
+					// Just 3 sections
+					replacement = string.Format(
+						CultureInfo.InvariantCulture,
+						replacementFormat,
+						major,
+						minor,
+						version);
+				}
+				else
+				{
+					// 4 sections
+					replacement = string.Format(
+						CultureInfo.InvariantCulture,
+						replacementFormat,
+						major,
+						minor,
+						revision,
+						version);
+				}
 
 				contents = Regex.Replace(
 					contents, pattern, replacement);

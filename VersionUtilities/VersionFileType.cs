@@ -24,6 +24,11 @@ namespace DigitalZenWorks.Common.Utilities
 		/// <summary>
 		/// A c sharp project file.
 		/// </summary>
-		CsProj
+		CsProj,
+
+		/// <summary>
+		/// A css file.
+		/// </summary>
+		Css
 	}
 }
