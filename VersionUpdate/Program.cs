@@ -8,7 +8,7 @@ namespace VersionUpdate
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			Console.WriteLine("Version Update");
 
 			if (CheckCommandLineParameters(args))
 			{
