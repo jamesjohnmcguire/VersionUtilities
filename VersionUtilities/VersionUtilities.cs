@@ -54,7 +54,7 @@ namespace DigitalZenWorks.Common.VersionUtilities
 					int index = contents.IndexOf(
 						packageId, StringComparison.OrdinalIgnoreCase) +
 						packageId.Length + 1;
-					string substring = contents.Substring(index);
+					string substring = contents[index..];
 					version =
 						Regex.Match(substring, "\"([^\"]*)\"").Groups[1].Value;
 				}
@@ -144,8 +144,6 @@ namespace DigitalZenWorks.Common.VersionUtilities
 		private static string AssemblyInfoTagUpdate(
 			string contents, string tag, out string version)
 		{
-			version = null;
-
 			string pattern = tag + "\\(\"(?<major>\\d+)\\.(?<minor>\\d+)\\." +
 				"(?<revision>\\d+)\\.(?<build>\\d+)\"\\)";
 			string replacementFormat = tag + "(\"{0}.{1}.{2}.{3}\")";
@@ -159,14 +157,12 @@ namespace DigitalZenWorks.Common.VersionUtilities
 		private static string AssemblyInfoUpdate(
 			string contents, out string version)
 		{
-			version = null;
-
 			string tag = "AssemblyVersion";
 			contents = AssemblyInfoTagUpdate(contents, tag, out version);
 
 			tag = "AssemblyFileVersion";
-			string nextVersion = null;
-			contents = AssemblyInfoTagUpdate(contents, tag, out nextVersion);
+			contents = AssemblyInfoTagUpdate(
+				contents, tag, out string nextVersion);
 
 			if (!string.IsNullOrWhiteSpace(nextVersion))
 			{
@@ -179,8 +175,6 @@ namespace DigitalZenWorks.Common.VersionUtilities
 		private static string CsProjTagUpdate(
 			string contents, string tag, out string version)
 		{
-			version = null;
-
 			string pattern = tag + "\\>(?<major>\\d+)\\.(?<minor>\\d+)\\." +
 				"(?<revision>\\d+)\\.(?<build>\\d+)\\<";
 			string replacementFormat = tag + ">{0}.{1}.{2}.{3}<";
@@ -194,14 +188,11 @@ namespace DigitalZenWorks.Common.VersionUtilities
 		private static string CsProjUpdate(
 			string contents, out string version)
 		{
-			version = null;
-
 			string tag = "AssemblyVersion";
 			contents = CsProjTagUpdate(contents, tag, out version);
 
 			tag = "AssemblyFileVersion";
-			string nextVersion = null;
-			contents = CsProjTagUpdate(contents, tag, out nextVersion);
+			contents = CsProjTagUpdate(contents, tag, out string nextVersion);
 
 			if (!string.IsNullOrWhiteSpace(nextVersion))
 			{
@@ -214,8 +205,6 @@ namespace DigitalZenWorks.Common.VersionUtilities
 		private static string CssUpdate(
 			string contents, out string version)
 		{
-			version = null;
-
 			string tag = "Version: ";
 
 			string pattern = tag +
@@ -282,7 +271,7 @@ namespace DigitalZenWorks.Common.VersionUtilities
 		private static string UpdateDateStamp(
 			string fileContents)
 		{
-			Match oldVersionMatch = Regex.Match(
+			_ = Regex.Match(
 				fileContents,
 				"PRODUCT_VERSION_DATE\\s*\"([0-9]{4,4}-?[0-1][0-9]-?[0-3][0-9])");
 
@@ -301,7 +290,7 @@ namespace DigitalZenWorks.Common.VersionUtilities
 		private static string UpdateTimeStamp(
 			string fileContents)
 		{
-			Match oldVersionMatch = Regex.Match(
+			_ = Regex.Match(
 				fileContents,
 				"PRODUCT_VERSION_TIME\\s*\"([0-9]*:[0-9]*:[0-9]*)");
 
@@ -337,12 +326,11 @@ namespace DigitalZenWorks.Common.VersionUtilities
 			out string version)
 		{
 			version = null;
-			Regex regex = new Regex(pattern);
+			Regex regex = new (pattern);
 			MatchCollection matches = regex.Matches(contents);
 
 			if (matches.Count > 0)
 			{
-				string replacement = string.Empty;
 				int build;
 				string major = matches[0].Groups["major"].Value;
 				string minor = matches[0].Groups["minor"].Value;
@@ -353,6 +341,7 @@ namespace DigitalZenWorks.Common.VersionUtilities
 
 				version = build.ToString(CultureInfo.InvariantCulture);
 
+				string replacement;
 				if (string.IsNullOrWhiteSpace(revision))
 				{
 					// Just 3 sections

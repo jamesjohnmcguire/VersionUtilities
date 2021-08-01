@@ -4,6 +4,9 @@ using System.IO;
 
 namespace VersionUpdate
 {
+	/// <summary>
+	/// Version update program.
+	/// </summary>
 	public static class Program
 	{
 		static void Main(string[] args)
