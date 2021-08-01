@@ -10,7 +10,7 @@ using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace DigitalZenWorks.Common.Utilities
+namespace DigitalZenWorks.Common.VersionUtilities
 {
 	/// <summary>
 	/// Version Utilities.

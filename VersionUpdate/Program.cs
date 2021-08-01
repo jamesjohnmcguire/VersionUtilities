@@ -1,4 +1,4 @@
-﻿using DigitalZenWorks.Common.Utilities;
+﻿using DigitalZenWorks.Common.VersionUtilities;
 using System;
 using System.IO;
 
