@@ -29,6 +29,11 @@ namespace DigitalZenWorks.Common.VersionUtilities
 		/// <summary>
 		/// A css file.
 		/// </summary>
-		Css
+		Css,
+
+		/// <summary>
+		/// A php file.
+		/// </summary>
+		Php
 	}
 }

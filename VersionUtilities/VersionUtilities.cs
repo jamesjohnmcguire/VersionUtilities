@@ -114,6 +114,10 @@ namespace DigitalZenWorks.Common.VersionUtilities
 								contents = CssUpdate(
 									contents, out version);
 								break;
+							case VersionFileType.Php:
+								contents = PhpUpdate(
+									contents, out version);
+								break;
 							default:
 								break;
 						}
@@ -234,11 +238,29 @@ namespace DigitalZenWorks.Common.VersionUtilities
 				case ".css":
 					fileType = VersionFileType.Css;
 					break;
+				case ".php":
+					fileType = VersionFileType.Php;
+					break;
 				default:
 					break;
 			}
 
 			return fileType;
+		}
+
+		private static string PhpUpdate(
+			string contents, out string version)
+		{
+			string tag = "', '";
+
+			string pattern = tag +
+				"(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<build>\\d+)";
+			string replacementFormat = tag + "{0}.{1}.{2}";
+
+			contents = VersionTagUpdate(
+				contents, pattern, replacementFormat, out version);
+
+			return contents;
 		}
 
 		private static string UpdateBuildNumber(

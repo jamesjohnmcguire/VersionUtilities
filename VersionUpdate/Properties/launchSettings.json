@@ -2,7 +2,7 @@
   "profiles": {
     "VersionUpdate": {
       "commandName": "Project",
-      "commandLineArgs": "Style.css",
+      "commandLineArgs": "functions.php",
       "workingDirectory": "C:\\Users\\JamesMc\\Data\\Clients\\DigitalZenWorks\\DigitalZenTheme\\SourceCode"
     }
   }
