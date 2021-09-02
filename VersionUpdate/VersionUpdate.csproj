@@ -7,11 +7,15 @@
 		<Company>James John McGuire</Company>
 		<Copyright>Copyright © 2020 - 2021</Copyright>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<OutputPath>$(SolutionDir)\Bin\$(Configuration)\$(Platform)</OutputPath>
 		<OutputType>Exe</OutputType>
 		<Platforms>x86;x64</Platforms>
+		<PublishTrimmed>true</PublishTrimmed>
+		<PublishReadyToRun>true</PublishReadyToRun>
+		<PublishSingleFile>true</PublishSingleFile>
 		<TargetFramework>net5.0</TargetFramework>
 	</PropertyGroup>
 
