@@ -15,7 +15,6 @@
 		<Platforms>x86;x64</Platforms>
 		<PublishTrimmed>true</PublishTrimmed>
 		<PublishReadyToRun>true</PublishReadyToRun>
-		<PublishSingleFile>true</PublishSingleFile>
 		<TargetFramework>net5.0</TargetFramework>
 	</PropertyGroup>
 
