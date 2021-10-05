@@ -260,6 +260,18 @@ namespace DigitalZenWorks.Common.VersionUtilities
 			contents = VersionTagUpdate(
 				contents, pattern, replacementFormat, out version);
 
+			if (string.IsNullOrWhiteSpace(version))
+			{
+				tag = "@version(?<whitespace>\\s+)";
+
+				pattern = tag +
+					"(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<build>\\d+)";
+				replacementFormat = tag + "{0}.{1}.{2}";
+
+				contents = VersionTagUpdate(
+					contents, pattern, replacementFormat, out version);
+			}
+
 			return contents;
 		}
 
@@ -366,6 +378,9 @@ namespace DigitalZenWorks.Common.VersionUtilities
 				string replacement;
 				if (string.IsNullOrWhiteSpace(revision))
 				{
+					string whitespace = matches[0].Groups["whitespace"].Value;
+
+					replacementFormat = replacementFormat.Replace("(?<whitespace>\\s+)", whitespace);
 					// Just 3 sections
 					replacement = string.Format(
 						CultureInfo.InvariantCulture,
