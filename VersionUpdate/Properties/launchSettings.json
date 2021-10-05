@@ -2,8 +2,8 @@
   "profiles": {
     "VersionUpdate": {
       "commandName": "Project",
-      "commandLineArgs": "functions.php",
-      "workingDirectory": "C:\\Users\\JamesMc\\Data\\Clients\\DigitalZenWorks\\DigitalZenTheme\\SourceCode"
+      "commandLineArgs": "ImageOptimizer.php",
+      "workingDirectory": "C:\\Users\\JamesMc\\Data\\Clients\\DigitalZenWorks\\Libraries\\PHP\\PhpImageOptimizer\\SourceCode"
     }
   }
 }
