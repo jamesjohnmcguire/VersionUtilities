@@ -12,7 +12,6 @@
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<OutputPath>$(SolutionDir)\Bin\$(Configuration)\$(Platform)</OutputPath>
 		<OutputType>Exe</OutputType>
-		<Platforms>x86;x64</Platforms>
 		<PublishTrimmed>true</PublishTrimmed>
 		<PublishReadyToRun>true</PublishReadyToRun>
 		<TargetFramework>net5.0</TargetFramework>
