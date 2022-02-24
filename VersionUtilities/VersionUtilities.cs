@@ -198,7 +198,23 @@ namespace DigitalZenWorks.Common.VersionUtilities
 			tag = "AssemblyFileVersion";
 			contents = CsProjTagUpdate(contents, tag, out string nextVersion);
 
-			if (!string.IsNullOrWhiteSpace(nextVersion))
+			if (string.IsNullOrWhiteSpace(version))
+			{
+				version = nextVersion;
+			}
+
+			tag = "FileVersion";
+			contents = CsProjTagUpdate(contents, tag, out nextVersion);
+
+			if (string.IsNullOrWhiteSpace(version))
+			{
+				version = nextVersion;
+			}
+
+			tag = "Version";
+			contents = CsProjTagUpdate(contents, tag, out nextVersion);
+
+			if (string.IsNullOrWhiteSpace(version))
 			{
 				version = nextVersion;
 			}
