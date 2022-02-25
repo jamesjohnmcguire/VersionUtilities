@@ -1,5 +1,5 @@
 CD %~dp0
-CD ..\..
+CD ..
 
 CALL dotnet publish --configuration Release -p:PublishReadyToRun=false;PublishSingleFile=true --runtime linux-x64 --self-contained true --output Release\linux-x64 VersionUpdate
 CALL dotnet publish --configuration Release -p:PublishReadyToRun=false;PublishSingleFile=true --runtime osx-x64 --self-contained true --output Release\osx-x64 VersionUpdate
