@@ -396,7 +396,9 @@ namespace DigitalZenWorks.Common.VersionUtilities
 				{
 					string whitespace = matches[0].Groups["whitespace"].Value;
 
-					replacementFormat = replacementFormat.Replace("(?<whitespace>\\s+)", whitespace);
+					replacementFormat = replacementFormat.Replace(
+						"(?<whitespace>\\s+)", whitespace);
+
 					// Just 3 sections
 					replacement = string.Format(
 						CultureInfo.InvariantCulture,
