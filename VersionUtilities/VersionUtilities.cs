@@ -225,10 +225,10 @@ namespace DigitalZenWorks.Common.VersionUtilities
 		private static string CssUpdate(
 			string contents, out string version)
 		{
-			string tag = "Version: ";
+			string tag = @"Version:(?<whitespace>\s*)";
 
 			string pattern = tag +
-				"(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<build>\\d+)";
+				@"(?<major>\d+)\.(?<minor>\d+)\.(?<build>\d+)";
 			string replacementFormat = tag + "{0}.{1}.{2}";
 
 			contents = VersionTagUpdate(
@@ -397,7 +397,7 @@ namespace DigitalZenWorks.Common.VersionUtilities
 					string whitespace = matches[0].Groups["whitespace"].Value;
 
 					replacementFormat = replacementFormat.Replace(
-						"(?<whitespace>\\s+)", whitespace);
+						@"(?<whitespace>\s*)", whitespace);
 
 					// Just 3 sections
 					replacement = string.Format(
