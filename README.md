@@ -1,6 +1,6 @@
 # VersionUtilities
 
-This is a project to help support automatic version updates and other versioning functionality.
+This is a project to support getting version information and helping to automatic version updates and other versioning functionality.
 
 ## Getting Started
 
@@ -31,6 +31,9 @@ For the known file types, it only acts upon a preceding identifier marker. This 
 - , .php files
 
 Following after the identifier marker, a recognizable version tag must also be present, to be updated.
+
+#### Library usage:
+GetVersion();
 
 ## Contributing
 
