@@ -1,17 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AnalysisMode>All</AnalysisMode>
 		<AssemblyName>DigitalZenWorks.Common.VersionUtilities</AssemblyName>
 		<AssemblyVersion>1.0.0.10</AssemblyVersion>
 		<CodeAnalysisRuleSet>../CodeAnalysis.ruleset</CodeAnalysisRuleSet>
 		<Company>Digital Zen Works</Company>
 		<Copyright>Copyright © 2020 - 2023 James John McGuire</Copyright>
+		<Description>This client library provides light weight functionality for versioning.</Description>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<FileVersion>1.0.0.10</FileVersion>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<LangVersion>Latest</LangVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<OutputPath>$(SolutionDir)\Bin\$(Configuration)\$(Platform)</OutputPath>
+		<PackageId>DigitalZenWorks.Common.VersionUtilities</PackageId>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageTags>Digital Zen Works;Versioning;Version Utilities</PackageTags>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<TargetFramework>net6.0</TargetFramework>
 		<Version>1.0.0.10</Version>
 	</PropertyGroup>
@@ -26,9 +32,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Include="../.editorconfig" Link="../.editorconfig" />
 		<AdditionalFiles Include="../stylecop.json" />
 		<CodeAnalysisDictionary Include="../CodeAnalysis.ruleset" />
-	  <None Include="../.editorconfig" Link="../.editorconfig" />
+		<None Include="../LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="../README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
 
 </Project>
