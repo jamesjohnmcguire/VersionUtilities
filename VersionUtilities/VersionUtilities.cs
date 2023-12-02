@@ -5,6 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
@@ -17,6 +18,38 @@ namespace DigitalZenWorks.Common.VersionUtilities
 	/// </summary>
 	public static class VersionUtilities
 	{
+		/// <summary>
+		/// Gets the assembly information.
+		/// </summary>
+		/// <param name="assembly">The assembly to check.</param>
+		/// <returns>A FileVersionInfo object.</returns>
+		public static FileVersionInfo GetAssemblyInformation(
+			Assembly assembly = null)
+		{
+			FileVersionInfo fileVersionInfo = null;
+
+			if (assembly == null)
+			{
+				assembly = Assembly.GetCallingAssembly();
+			}
+
+			string location = assembly.Location;
+
+			if (string.IsNullOrWhiteSpace(location))
+			{
+				// Single file apps have no assemblies.
+				Process process = Process.GetCurrentProcess();
+				location = process.MainModule.FileName;
+			}
+
+			if (!string.IsNullOrWhiteSpace(location))
+			{
+				fileVersionInfo = FileVersionInfo.GetVersionInfo(location);
+			}
+
+			return fileVersionInfo;
+		}
+
 		/// <summary>
 		/// Gets the build number.
 		/// </summary>
@@ -66,17 +99,29 @@ namespace DigitalZenWorks.Common.VersionUtilities
 		/// <summary>
 		/// Get the version.
 		/// </summary>
+		/// <param name="fromName">Indicates whether to check the version
+		/// from the assembly name object or not.</param>
 		/// <returns>The version.</returns>
-		public static string GetVersion()
+		public static string GetVersion(bool fromName = false)
 		{
 			string version;
 
 			Assembly assembly = Assembly.GetCallingAssembly();
 
-			AssemblyName name = assembly.GetName();
-			Version versionNumber = name.Version;
+			if (fromName == true)
+			{
+				AssemblyName name = assembly.GetName();
+				Version versionNumber = name.Version;
 
-			version = versionNumber.ToString();
+				version = versionNumber.ToString();
+			}
+			else
+			{
+				FileVersionInfo fileVersionInfo =
+					GetAssemblyInformation(assembly);
+
+				version = fileVersionInfo.FileVersion;
+			}
 
 			return version;
 		}
