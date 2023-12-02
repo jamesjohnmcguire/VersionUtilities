@@ -1,5 +1,5 @@
 ﻿/////////////////////////////////////////////////////////////////////////////
-// <copyright file="VersionUtilities.cs" company="James John McGuire">
+// <copyright file="Versioning.cs" company="James John McGuire">
 // Copyright © 2020 - 2023 James John McGuire. All Rights Reserved.
 // </copyright>
 /////////////////////////////////////////////////////////////////////////////
@@ -14,9 +14,9 @@ using System.Text.RegularExpressions;
 namespace DigitalZenWorks.Common.VersionUtilities
 {
 	/// <summary>
-	/// Version Utilities.
+	/// Versioning class.
 	/// </summary>
-	public static class VersionUtilities
+	public static class Versioning
 	{
 		/// <summary>
 		/// Gets the assembly information.

@@ -29,7 +29,7 @@ namespace DigitalZenWorks.Common.VersionUtilities.Test
 		public void TestGetAssemblyInformation()
 		{
 			FileVersionInfo versionInfo =
-				VersionUtilities.GetAssemblyInformation();
+				Versioning.GetAssemblyInformation();
 			Assert.NotNull(versionInfo);
 		}
 
@@ -39,7 +39,7 @@ namespace DigitalZenWorks.Common.VersionUtilities.Test
 		[Test]
 		public void TestGetVersion()
 		{
-			string version = VersionUtilities.GetVersion();
+			string version = Versioning.GetVersion();
 			Assert.NotNull(version);
 
 			Assert.That(version, Is.EqualTo("1.0.1.0 Digital Zen Works"));

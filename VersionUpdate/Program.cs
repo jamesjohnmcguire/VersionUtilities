@@ -15,7 +15,7 @@ namespace VersionUpdate
 
 			if (CheckCommandLineParameters(args))
 			{
-				string output = VersionUtilities.VersionUpdate(args[0]);
+				string output = Versioning.VersionUpdate(args[0]);
 				Console.WriteLine(output);
 			}
 		}
