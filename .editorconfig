@@ -5,3 +5,6 @@ csharp_style_conditional_delegate_call = false
 
 # IDE0017: Simplify object initialization
 dotnet_style_object_initializer = false
+
+# NUnit2018: Consider using Assert.That(expr, Is.Not.Null) instead of ClassicAssert.NotNull(expr)
+dotnet_diagnostic.NUnit2018.severity = none
