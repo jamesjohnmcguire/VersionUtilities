@@ -92,8 +92,10 @@ namespace DigitalZenWorks.Common.VersionUtilities
 #else
 					string substring = contents.Substring(index);
 #endif
-					version =
-						Regex.Match(substring, "\"([^\"]*)\"").Groups[1].Value;
+
+					string pattern = "\"([^\"]*)\"";
+					Match matches = Regex.Match(substring, pattern);
+					version = matches.Groups[1].Value;
 				}
 			}
 
@@ -343,14 +345,15 @@ namespace DigitalZenWorks.Common.VersionUtilities
 		private static string UpdateBuildNumber(
 			string fileContents)
 		{
-			Match oldVersionMatch = Regex.Match(
-				fileContents, "PRODUCT_VERSION_BUILD\\s*([0-9])*");
+			string pattern = "PRODUCT_VERSION_BUILD\\s*([0-9])*";
+			Match oldVersionMatch = Regex.Match(fileContents, pattern);
 
 			string oldVersion = oldVersionMatch.ToString();
 			Console.WriteLine("Old Version: " + oldVersion);
 
-			Match versionMatchsub = Regex.Match(
-				oldVersion, "[0-9]+"); // only one digit
+			// Only one digit.
+			pattern = "[0-9]+";
+			Match versionMatchsub = Regex.Match(oldVersion, pattern);
 
 			string versionNumber = versionMatchsub.ToString();
 			int buildNumber = Convert.ToInt32(
@@ -360,10 +363,10 @@ namespace DigitalZenWorks.Common.VersionUtilities
 			string newVersion = "PRODUCT_VERSION_BUILD\t" +
 				buildNumber.ToString(CultureInfo.InvariantCulture);
 
+			pattern = "PRODUCT_VERSION_BUILD\\s*([0-9])*";
+
 			string newFileContents = Regex.Replace(
-				fileContents,
-				"PRODUCT_VERSION_BUILD\\s*([0-9])*",
-				newVersion);
+				fileContents, pattern, newVersion);
 			Console.WriteLine("New Version: " + newVersion);
 
 			return newFileContents;
@@ -398,9 +401,10 @@ namespace DigitalZenWorks.Common.VersionUtilities
 		private static string UpdateTimeStamp(
 			string fileContents)
 		{
-			_ = Regex.Match(
-				fileContents,
-				"PRODUCT_VERSION_TIME\\s*\"([0-9]*:[0-9]*:[0-9]*)");
+			string pattern =
+				"PRODUCT_VERSION_TIME\\s*\"([0-9]*:[0-9]*:[0-9]*)";
+
+			_ = Regex.Match(fileContents, pattern);
 
 			DateTime today = DateTime.UtcNow;
 
@@ -409,9 +413,7 @@ namespace DigitalZenWorks.Common.VersionUtilities
 				today.ToString("HH:mm:ss", CultureInfo.InvariantCulture);
 
 			string newFileContents = Regex.Replace(
-				fileContents,
-				"PRODUCT_VERSION_TIME\\s*\"([0-9]*:[0-9]*:[0-9]*)",
-				newTime);
+				fileContents, pattern, newTime);
 
 			return newFileContents;
 		}
