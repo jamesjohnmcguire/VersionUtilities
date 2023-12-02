@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VersionUpdate", "VersionUpd
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VersionUtilities", "VersionUtilities\VersionUtilities.csproj", "{672EE775-F7E1-499A-8D52-C5D0E4830241}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VersionUtilities.Test", "VersionUtilities.Test\VersionUtilities.Test.csproj", "{FBEDB5BC-2023-4C6D-AB0D-E136D51EA4EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{672EE775-F7E1-499A-8D52-C5D0E4830241}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{672EE775-F7E1-499A-8D52-C5D0E4830241}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{672EE775-F7E1-499A-8D52-C5D0E4830241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBEDB5BC-2023-4C6D-AB0D-E136D51EA4EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBEDB5BC-2023-4C6D-AB0D-E136D51EA4EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBEDB5BC-2023-4C6D-AB0D-E136D51EA4EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBEDB5BC-2023-4C6D-AB0D-E136D51EA4EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
