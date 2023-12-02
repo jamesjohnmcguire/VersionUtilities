@@ -1,5 +1,5 @@
 ﻿/////////////////////////////////////////////////////////////////////////////
-// <copyright file="Versioning.cs" company="James John McGuire">
+// <copyright file="VersionSupport.cs" company="James John McGuire">
 // Copyright © 2020 - 2023 James John McGuire. All Rights Reserved.
 // </copyright>
 /////////////////////////////////////////////////////////////////////////////
@@ -14,9 +14,9 @@ using System.Text.RegularExpressions;
 namespace DigitalZenWorks.Common.VersionUtilities
 {
 	/// <summary>
-	/// Versioning class.
+	/// VersionSupport class.
 	/// </summary>
-	public static class Versioning
+	public static class VersionSupport
 	{
 		/// <summary>
 		/// Gets the assembly information.
@@ -349,10 +349,12 @@ namespace DigitalZenWorks.Common.VersionUtilities
 				oldVersion, "[0-9]+"); // only one digit
 
 			string versionNumber = versionMatchsub.ToString();
-			int buildNumber = Convert.ToInt32(versionNumber);
+			int buildNumber = Convert.ToInt32(
+				versionNumber, CultureInfo.InvariantCulture);
 			buildNumber++;
 
-			string newVersion = "PRODUCT_VERSION_BUILD\t" + buildNumber.ToString();
+			string newVersion = "PRODUCT_VERSION_BUILD\t" +
+				buildNumber.ToString(CultureInfo.InvariantCulture);
 
 			string newFileContents = Regex.Replace(
 				fileContents,
@@ -366,17 +368,24 @@ namespace DigitalZenWorks.Common.VersionUtilities
 		private static string UpdateDateStamp(
 			string fileContents)
 		{
+			string replacement = "PRODUCT_VERSION_DATE" +
+				"\\s*\"([0-9]{4,4}-?[0-1][0-9]-?[0-3][0-9])";
+
 			_ = Regex.Match(
 				fileContents,
-				"PRODUCT_VERSION_DATE\\s*\"([0-9]{4,4}-?[0-1][0-9]-?[0-3][0-9])");
+				replacement);
 
 			DateTime today = DateTime.UtcNow;
 
-			string newDate = "PRODUCT_VERSIONDATE\t\"" + today.ToString("yyyy-MM-dd");
+			string newDate = "PRODUCT_VERSIONDATE\t\"" + today.ToString(
+				"yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+			replacement = "PRODUCT_VERSION_DATE" +
+				"\\s\"([0-9]{4,4}-?[0-1][0-9]-?[0-3][0-9])";
 
 			string newFileContents = Regex.Replace(
 				fileContents,
-				"PRODUCT_VERSION_DATE\\s\"([0-9]{4,4}-?[0-1][0-9]-?[0-3][0-9])",
+				replacement,
 				newDate);
 
 			return newFileContents;
@@ -392,7 +401,8 @@ namespace DigitalZenWorks.Common.VersionUtilities
 			DateTime today = DateTime.UtcNow;
 
 			string newTime =
-				"PRODUCT_VERSION_TIME\t\"" + today.ToString("HH:mm:ss");
+				"PRODUCT_VERSION_TIME\t\"" +
+				today.ToString("HH:mm:ss", CultureInfo.InvariantCulture);
 
 			string newFileContents = Regex.Replace(
 				fileContents,
@@ -430,8 +440,9 @@ namespace DigitalZenWorks.Common.VersionUtilities
 				string major = matches[0].Groups["major"].Value;
 				string minor = matches[0].Groups["minor"].Value;
 				string revision = matches[0].Groups["revision"].Value;
-
-				build = Convert.ToInt32(matches[0].Groups["build"].Value);
+				string oldBuild = matches[0].Groups["build"].Value;
+				build =
+					Convert.ToInt32(oldBuild, CultureInfo.InvariantCulture);
 				build++;
 
 				version = build.ToString(CultureInfo.InvariantCulture);
@@ -442,7 +453,9 @@ namespace DigitalZenWorks.Common.VersionUtilities
 					string whitespace = matches[0].Groups["whitespace"].Value;
 
 					replacementFormat = replacementFormat.Replace(
-						@"(?<whitespace>\s*)", whitespace);
+						@"(?<whitespace>\s*)",
+						whitespace,
+						StringComparison.Ordinal);
 
 					// Just 3 sections
 					replacement = string.Format(
