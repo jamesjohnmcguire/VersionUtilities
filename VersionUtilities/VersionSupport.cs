@@ -87,7 +87,11 @@ namespace DigitalZenWorks.Common.VersionUtilities
 					int index = contents.IndexOf(
 						packageId, StringComparison.OrdinalIgnoreCase) +
 						packageId.Length + 1;
+#if NET5_0_OR_GREATER
 					string substring = contents[index..];
+#else
+					string substring = contents.Substring(index);
+#endif
 					version =
 						Regex.Match(substring, "\"([^\"]*)\"").Groups[1].Value;
 				}
@@ -452,10 +456,16 @@ namespace DigitalZenWorks.Common.VersionUtilities
 				{
 					string whitespace = matches[0].Groups["whitespace"].Value;
 
+#if NETCOREAPP1_0_OR_GREATER
 					replacementFormat = replacementFormat.Replace(
 						@"(?<whitespace>\s*)",
 						whitespace,
 						StringComparison.Ordinal);
+#else
+					replacementFormat = replacementFormat.Replace(
+						@"(?<whitespace>\s*)",
+						whitespace);
+#endif
 
 					// Just 3 sections
 					replacement = string.Format(

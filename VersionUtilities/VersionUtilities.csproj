@@ -4,6 +4,7 @@
 		<AnalysisMode>All</AnalysisMode>
 		<AssemblyName>DigitalZenWorks.Common.VersionUtilities</AssemblyName>
 		<AssemblyVersion>1.0.0.10</AssemblyVersion>
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<CodeAnalysisRuleSet>../CodeAnalysis.ruleset</CodeAnalysisRuleSet>
 		<Company>Digital Zen Works</Company>
 		<Copyright>Copyright © 2020 - 2023 James John McGuire</Copyright>
@@ -18,8 +19,17 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageTags>Digital Zen Works;Versioning;Version Utilities</PackageTags>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<TargetFramework>net6.0</TargetFramework>
+		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
 		<Version>1.0.0.10</Version>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<OutputPath>$(SolutionDir)\Bin\$(Configuration)\$(Platform)</OutputPath>
+		<TargetFramework>net8.0</TargetFramework>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<TargetFrameworks>netstandard2.0;net472;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
 	</PropertyGroup>
 
 	<ItemGroup>
