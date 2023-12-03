@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VersionUtilities", "Version
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VersionUtilities.Test", "VersionUtilities.Test\VersionUtilities.Test.csproj", "{FBEDB5BC-2023-4C6D-AB0D-E136D51EA4EE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{0D0737C7-5F4E-4DDE-AB85-9CEF91DF317D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
