@@ -7,7 +7,7 @@
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<CodeAnalysisRuleSet>../CodeAnalysis.ruleset</CodeAnalysisRuleSet>
 		<Company>Digital Zen Works</Company>
-		<Copyright>Copyright © 2020 - 2023 James John McGuire</Copyright>
+		<Copyright>Copyright © 2020 - 2024 James John McGuire</Copyright>
 		<Description>This client library provides light weight functionality for versioning.</Description>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<FileVersion>1.1.12.0</FileVersion>

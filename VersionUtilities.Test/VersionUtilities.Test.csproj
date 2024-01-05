@@ -4,7 +4,7 @@
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 		<CodeAnalysisRuleSet>../CodeAnalysis.ruleset</CodeAnalysisRuleSet>
 		<Company>Digital Zen Works</Company>
-		<Copyright>Copyright © 2020 - 2023</Copyright>
+		<Copyright>Copyright © 2020 - 2024</Copyright>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<FileVersion>1.0.1.0</FileVersion>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>

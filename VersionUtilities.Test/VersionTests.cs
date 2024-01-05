@@ -1,6 +1,6 @@
 ﻿/////////////////////////////////////////////////////////////////////////////
 // <copyright file="VersionTests.cs" company="James John McGuire">
-// Copyright © 2020 - 2023 James John McGuire. All Rights Reserved.
+// Copyright © 2020 - 2024 James John McGuire. All Rights Reserved.
 // </copyright>
 /////////////////////////////////////////////////////////////////////////////
 
