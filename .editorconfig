@@ -1,8 +1,5 @@
 ﻿[*.cs]
 
-# IDE1005: Delegate invocation can be simplified.
-csharp_style_conditional_delegate_call = false
-
 # IDE0017: Simplify object initialization
 dotnet_style_object_initializer = false
 
