@@ -47,7 +47,7 @@ CD nupkg
 
 nuget push DigitalZenWorks.Common.VersionUtilities.%2.nupkg %3 -Source https://api.nuget.org/v3/index.json
 
-CD ..\..\..
+CD ..
 
 GOTO finsh
 
