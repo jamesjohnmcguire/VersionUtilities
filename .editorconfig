@@ -5,3 +5,6 @@ csharp_style_conditional_delegate_call = false
 
 # IDE0017: Simplify object initialization
 dotnet_style_object_initializer = false
+
+# SA1413: Use Trailing Commas In MultiLine Initializers
+dotnet_diagnostic.SA1413.severity = none
