@@ -5,9 +5,9 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VersionUpdate", "VersionUpdate\VersionUpdate.csproj", "{975D6CAE-01CD-459C-8933-6757EE1CA90B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VersionUtilities", "VersionUtilities\VersionUtilities.csproj", "{672EE775-F7E1-499A-8D52-C5D0E4830241}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VersionUtilities", "VersionUtilities\DigitalZenWorks.Common.VersionUtilities.csproj", "{672EE775-F7E1-499A-8D52-C5D0E4830241}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VersionUtilities.Test", "VersionUtilities.Test\VersionUtilities.Test.csproj", "{FBEDB5BC-2023-4C6D-AB0D-E136D51EA4EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VersionUtilities.Test", "VersionUtilities.Test\DigitalZenWorks.Common.VersionUtilities.Test.csproj", "{FBEDB5BC-2023-4C6D-AB0D-E136D51EA4EE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{0D0737C7-5F4E-4DDE-AB85-9CEF91DF317D}"
 	ProjectSection(SolutionItems) = preProject
