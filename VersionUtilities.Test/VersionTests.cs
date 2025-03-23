@@ -4,11 +4,12 @@
 // </copyright>
 /////////////////////////////////////////////////////////////////////////////
 
-using System.Diagnostics;
-using DigitalZenWorks.Common.VersionUtilities;
-
 namespace DigitalZenWorks.Common.VersionUtilities.Test
 {
+	using System.Diagnostics;
+	using DigitalZenWorks.Common.VersionUtilities;
+	using NUnit.Framework;
+
 	/// <summary>
 	/// Version tests class.
 	/// </summary>

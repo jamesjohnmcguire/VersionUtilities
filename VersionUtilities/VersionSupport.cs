@@ -4,15 +4,15 @@
 // </copyright>
 /////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Reflection;
-using System.Text.RegularExpressions;
-
 namespace DigitalZenWorks.Common.VersionUtilities
 {
+	using System;
+	using System.Diagnostics;
+	using System.Globalization;
+	using System.IO;
+	using System.Reflection;
+	using System.Text.RegularExpressions;
+
 	/// <summary>
 	/// VersionSupport class.
 	/// </summary>
