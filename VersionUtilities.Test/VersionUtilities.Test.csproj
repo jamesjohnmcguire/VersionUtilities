@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
-		<CodeAnalysisRuleSet>../CodeAnalysis.ruleset</CodeAnalysisRuleSet>
 		<Company>Digital Zen Works</Company>
 		<Copyright>Copyright © 2020 - 2025</Copyright>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
@@ -40,7 +39,6 @@
 
 	<ItemGroup>
 		<AdditionalFiles Include="../stylecop.json" />
-		<CodeAnalysisDictionary Include="../CodeAnalysis.ruleset" />
 		<None Include="../.editorconfig" Link="../.editorconfig" />
 	</ItemGroup>
 
