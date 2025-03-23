@@ -40,9 +40,11 @@ if "%~3"=="" GOTO error2
 
 CD VersionUtilities
 
-msbuild -property:Configuration=Release -restore -target:rebuild;pack VersionUtilities.csproj
+dotnet build --configuration Release -p:PlatformTarget=AnyCPU -p:Prefer32Bit=false
+dotnet pack --configuration Release --output nupkg -p:IncludeSource=true -p:IncludeSymbols=true
 
-CD bin\Release
+CD nupkg
+
 nuget push DigitalZenWorks.Common.VersionUtilities.%2.nupkg %3 -Source https://api.nuget.org/v3/index.json
 
 CD ..\..\..
