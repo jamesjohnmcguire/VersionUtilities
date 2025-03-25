@@ -43,7 +43,7 @@ namespace DigitalZenWorks.Common.VersionUtilities.Test
 			string version = VersionSupport.GetVersion();
 			Assert.That(version, Is.Not.Null);
 
-			Assert.That(version, Is.EqualTo("1.0.1.0"));
+			Assert.That(version, Is.EqualTo("1.0.0.0"));
 		}
 	}
 }
