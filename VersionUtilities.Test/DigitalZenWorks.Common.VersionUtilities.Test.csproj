@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<Company>Digital Zen Works</Company>
-		<Copyright>Copyright © 2020 - 2025</Copyright>
+		<Copyright>Copyright © 2020 - 2026</Copyright>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<ImplicitUsings>enable</ImplicitUsings>

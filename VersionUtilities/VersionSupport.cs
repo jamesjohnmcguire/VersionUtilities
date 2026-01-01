@@ -1,6 +1,6 @@
 ﻿/////////////////////////////////////////////////////////////////////////////
 // <copyright file="VersionSupport.cs" company="James John McGuire">
-// Copyright © 2020 - 2025 James John McGuire. All Rights Reserved.
+// Copyright © 2020 - 2026 James John McGuire. All Rights Reserved.
 // </copyright>
 /////////////////////////////////////////////////////////////////////////////
 

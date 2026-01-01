@@ -6,7 +6,7 @@
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<Company>Digital Zen Works</Company>
-		<Copyright>Copyright © 2020 - 2025 James John McGuire</Copyright>
+		<Copyright>Copyright © 2020 - 2026 James John McGuire</Copyright>
 		<Description>This client library provides light weight functionality for versioning.</Description>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<FileVersion>1.1.14.0</FileVersion>
