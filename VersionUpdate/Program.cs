@@ -1,4 +1,4 @@
-﻿using DigitalZenWorks.Common.VersionUtilities;
+using DigitalZenWorks.Common.VersionUtilities;
 
 namespace VersionUpdate
 {
