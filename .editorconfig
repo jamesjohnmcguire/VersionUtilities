@@ -1,4 +1,4 @@
-﻿[*.cs]
+﻿[*.{cs,csproj,props,vb}]
 charset = utf-8
 end_of_line = lf
 
