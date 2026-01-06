@@ -24,4 +24,8 @@
 		<ProjectReference Include="..\VersionUtilities\DigitalZenWorks.Common.VersionUtilities.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<AdditionalFiles Include="../stylecop.json" />
+	</ItemGroup>
+
 </Project>
