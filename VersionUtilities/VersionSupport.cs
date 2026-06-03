@@ -437,7 +437,7 @@ namespace DigitalZenWorks.Common.VersionUtilities
 			out string version)
 		{
 			version = null;
-			Regex regex = new (pattern);
+			Regex regex = new(pattern);
 			MatchCollection matches = regex.Matches(contents);
 
 			if (matches.Count > 0)
