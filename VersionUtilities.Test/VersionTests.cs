@@ -13,7 +13,7 @@ namespace DigitalZenWorks.Common.VersionUtilities.Test
 	/// <summary>
 	/// Version tests class.
 	/// </summary>
-	public class VersionTests
+	internal class VersionTests
 	{
 		/// <summary>
 		/// Setups this instance.
