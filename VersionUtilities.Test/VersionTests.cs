@@ -4,46 +4,45 @@
 // </copyright>
 /////////////////////////////////////////////////////////////////////////////
 
-namespace DigitalZenWorks.Common.VersionUtilities.Test
+namespace DigitalZenWorks.Common.VersionUtilities.Test;
+
+using System.Diagnostics;
+using DigitalZenWorks.Common.VersionUtilities;
+using NUnit.Framework;
+
+/// <summary>
+/// Version tests class.
+/// </summary>
+internal class VersionTests
 {
-	using System.Diagnostics;
-	using DigitalZenWorks.Common.VersionUtilities;
-	using NUnit.Framework;
+	/// <summary>
+	/// Setups this instance.
+	/// </summary>
+	[SetUp]
+	public void Setup()
+	{
+	}
 
 	/// <summary>
-	/// Version tests class.
+	/// Tests the get assembly information.
 	/// </summary>
-	internal class VersionTests
+	[Test]
+	public void TestGetAssemblyInformation()
 	{
-		/// <summary>
-		/// Setups this instance.
-		/// </summary>
-		[SetUp]
-		public void Setup()
-		{
-		}
+		FileVersionInfo versionInfo =
+			VersionSupport.GetAssemblyInformation();
+		Assert.That(versionInfo, Is.Not.Null);
+	}
 
-		/// <summary>
-		/// Tests the get assembly information.
-		/// </summary>
-		[Test]
-		public void TestGetAssemblyInformation()
-		{
-			FileVersionInfo versionInfo =
-				VersionSupport.GetAssemblyInformation();
-			Assert.That(versionInfo, Is.Not.Null);
-		}
+	/// <summary>
+	/// Tests the get version.
+	/// </summary>
+	[Test]
+	public void TestGetVersion()
+	{
+		string version = VersionSupport.GetVersion();
+		Assert.That(version, Is.Not.Null);
 
-		/// <summary>
-		/// Tests the get version.
-		/// </summary>
-		[Test]
-		public void TestGetVersion()
-		{
-			string version = VersionSupport.GetVersion();
-			Assert.That(version, Is.Not.Null);
-
-			Assert.That(version, Is.EqualTo("1.0.0.0"));
-		}
+		Assert.That(version, Is.EqualTo("1.0.0.0"));
 	}
 }

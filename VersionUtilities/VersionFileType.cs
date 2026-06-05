@@ -4,36 +4,35 @@
 // </copyright>
 /////////////////////////////////////////////////////////////////////////////
 
-namespace DigitalZenWorks.Common.VersionUtilities
+namespace DigitalZenWorks.Common.VersionUtilities;
+
+/// <summary>
+/// Version file types.
+/// </summary>
+public enum VersionFileType
 {
 	/// <summary>
-	/// Version file types.
+	/// A generic version file.
 	/// </summary>
-	public enum VersionFileType
-	{
-		/// <summary>
-		/// A generic version file.
-		/// </summary>
-		Generic,
+	Generic,
 
-		/// <summary>
-		/// An assembly info file.
-		/// </summary>
-		AssemblyInfo,
+	/// <summary>
+	/// An assembly info file.
+	/// </summary>
+	AssemblyInfo,
 
-		/// <summary>
-		/// A c sharp project file.
-		/// </summary>
-		CsProj,
+	/// <summary>
+	/// A c sharp project file.
+	/// </summary>
+	CsProj,
 
-		/// <summary>
-		/// A css file.
-		/// </summary>
-		Css,
+	/// <summary>
+	/// A css file.
+	/// </summary>
+	Css,
 
-		/// <summary>
-		/// A php file.
-		/// </summary>
-		Php
-	}
+	/// <summary>
+	/// A php file.
+	/// </summary>
+	Php
 }
