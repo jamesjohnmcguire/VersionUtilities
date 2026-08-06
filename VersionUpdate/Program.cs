@@ -1,9 +1,8 @@
-using DigitalZenWorks.Common.VersionUtilities;
-
 namespace VersionUpdate;
 
 using System;
 using System.IO;
+using DigitalZenWorks.Common.VersionUtilities;
 
 /// <summary>
 /// Version update program.
