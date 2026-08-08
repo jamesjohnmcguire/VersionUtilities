@@ -9,7 +9,7 @@ using DigitalZenWorks.Common.VersionUtilities;
 /// </summary>
 internal static class Program
 {
-	static void Main(string[] args)
+	private static void Main(string[] args)
 	{
 		Console.WriteLine("Version Update");
 
