@@ -33,11 +33,13 @@ public static class VersionSupport
 			assembly = Assembly.GetCallingAssembly();
 		}
 
+#pragma warning disable IL3000 // Empty locations use the process path below.
 		string location = assembly.Location;
+#pragma warning restore IL3000
 
 		if (string.IsNullOrWhiteSpace(location))
 		{
-			// Single file apps have no assemblies.
+			// Bundled assemblies have no file location.
 			Process process = Process.GetCurrentProcess();
 			location = process.MainModule.FileName;
 		}
