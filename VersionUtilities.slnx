@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Files/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="VersionUpdate/VersionUpdate.csproj" />
+  <Project Path="VersionUtilities.Test/DigitalZenWorks.Common.VersionUtilities.Test.csproj" />
+  <Project Path="VersionUtilities/DigitalZenWorks.Common.VersionUtilities.csproj" />
+</Solution>
