@@ -1,0 +1,98 @@
+name: .NET
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - '[0-9]*'
+      - 'v[0-9]*'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the package from main after tests pass
+        type: boolean
+        default: false
+      version:
+        description: Expected package version (optional)
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore VersionUtilities.slnx -p:Configuration=Debug
+
+      - name: Build
+        run: dotnet build VersionUtilities.slnx -c Debug --no-restore
+
+      - name: Test
+        run: >-
+          dotnet test VersionUtilities.slnx -c Debug --no-build --no-restore
+          --verbosity normal
+
+  publish:
+    needs: build
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Check requested package version
+        working-directory: VersionUtilities
+        env:
+          EXPECTED_VERSION: ${{ inputs.version }}
+        run: |
+          version=$(dotnet msbuild -nologo -getProperty:Version)
+          expected="$EXPECTED_VERSION"
+          if [ -n "$expected" ] && [ "$expected" != "$version" ]; then
+            echo "::error::Requested version differs from package $version."
+            exit 1
+          fi
+
+      - name: Build Release package
+        working-directory: VersionUtilities
+        run: >-
+          dotnet pack -c Release --output ../artifacts
+          -p:GeneratePackageOnBuild=false
+
+      - name: NuGet login
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: jamesjohnmcguire
+
+      - name: Publish to NuGet.org
+        env:
+          NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
+        run: >-
+          dotnet nuget push "artifacts/*.nupkg"
+          --api-key "$NUGET_API_KEY"
+          --source https://api.nuget.org/v3/index.json
