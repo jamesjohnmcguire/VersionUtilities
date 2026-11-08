@@ -27,7 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\VersionUtilities\DigitalZenWorks.Common.VersionUtilities.csproj" />
+		<ProjectReference Include="../VersionUtilities/DigitalZenWorks.Common.VersionUtilities.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
