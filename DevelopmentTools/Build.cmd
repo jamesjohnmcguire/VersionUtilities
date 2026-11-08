@@ -33,7 +33,7 @@ IF NOT DEFINED versionUtilitiesProjectVersion SET "message=Unable to read the pr
 IF NOT DEFINED versionUtilitiesProjectVersion GOTO error
 
 ECHO Requesting publication of version %versionUtilitiesProjectVersion% from main.
-::gh workflow run dotnet.yml --ref main -F publish=true -f version="%versionUtilitiesProjectVersion%" --repo jamesjohnmcguire/VersionUtilities
+gh workflow run dotnet.yml --ref main -F publish=true -f version="%versionUtilitiesProjectVersion%" --repo jamesjohnmcguire/VersionUtilities
 ECHO ***** Would Have Puplished *****
 
 SET "versionUtilitiesBuildExitCode=%ERRORLEVEL%"
@@ -91,7 +91,7 @@ SET "versionUtilitiesZipExitCode=%ERRORLEVEL%"
 POPD
 IF NOT "%versionUtilitiesZipExitCode%"=="0" GOTO release-fail
 
-::gh release create "v%versionUtilitiesProjectVersion%" --notes "%versionUtilitiesProjectVersion%" --repo jamesjohnmcguire/VersionUtilities "Release\VersionUpdate-win-x64.zip" "Release\VersionUpdate-linux-x64.zip" "Release\VersionUpdate-osx-x64.zip"
+gh release create "v%versionUtilitiesProjectVersion%" --notes "%versionUtilitiesProjectVersion%" --repo jamesjohnmcguire/VersionUtilities "Release\VersionUpdate-win-x64.zip" "Release\VersionUpdate-linux-x64.zip" "Release\VersionUpdate-osx-x64.zip"
 SET "versionUtilitiesBuildExitCode=%ERRORLEVEL%"
 GOTO end
 
