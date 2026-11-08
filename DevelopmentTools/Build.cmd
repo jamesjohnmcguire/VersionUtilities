@@ -34,7 +34,6 @@ IF NOT DEFINED versionUtilitiesProjectVersion GOTO error
 
 ECHO Requesting publication of version %versionUtilitiesProjectVersion% from main.
 gh workflow run dotnet.yml --ref main -F publish=true -f version="%versionUtilitiesProjectVersion%" --repo jamesjohnmcguire/VersionUtilities
-ECHO ***** Would Have Puplished *****
 
 SET "versionUtilitiesBuildExitCode=%ERRORLEVEL%"
 IF NOT "%versionUtilitiesBuildExitCode%"=="0" SET "message=Problem Running: gh workflow run dotnet.yml"
